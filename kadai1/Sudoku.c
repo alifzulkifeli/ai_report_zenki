@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
 #define	TRUE		1
 #define FALSE		0
 #define DATA_SIZE0      3                           
@@ -27,9 +26,20 @@ void print_board(int board[DATA_SIZE][DATA_SIZE]){
         - 9 - 8 6 - 5 - -                               */
 
   /*** この部分を自分で書く ***/
+for(y=0;y<DATA_SIZE;y++){
+  for(x=0;x<DATA_SIZE;x++){
+    if(board[y][x]==0){
+      printf("- ");
+    }else{
 
-
+      printf("%d ", board[y][x]);
+    }
+  }
+  printf("\n");
+  }
 }
+
+
 
 /************************************************************************
    問題データの読み込み						
@@ -62,9 +72,14 @@ int find_blank(int *x, int *y, int board[DATA_SIZE][DATA_SIZE]){
   int i,j;
 
   for(;*y<DATA_SIZE;(*y)++,*x=0){ 
-    for(;*x<DATA_SIZE;(*x)++){
+    for(;*x<DATA_SIZE;(*x)++)
+    {
       /* board[*y][*x]が0ならば TRUE を返す */
       /*** この部分を自分で書く ***/
+      if(board[*y][*x]==0)
+      {
+        return TRUE;
+      }
     }
   }
   return  FALSE;
@@ -99,18 +114,43 @@ void solve(int x, int y, int board[DATA_SIZE][DATA_SIZE])
   for(i=0;i<DATA_SIZE;i++){
     /* 横方向 */
     /*** この部分を自分で書く ***/
-
+    for ( y0 = 0; y0 < DATA_SIZE; y0++)
+    {
+      if (board[y][y0] == i)
+      {
+        possible[i] = FALSE;
+      }
+    }
+    
 
     /* 縦方向 */
     /*** この部分を自分で書く ***/
-
-
+    for ( x0 = 0; x0 < DATA_SIZE; x0++)
+    {
+      if (board[y][x0] == i)
+      {
+        possible[i] = FALSE;
+      }     
+    }   
   }
   
   /* DATA_SIZE0xDATA_SIZE0の枠の中の board の値を調べて、
     すでに使用されている数字のところは possible を FALSE にする */
   /*** この部分を自分で書く ***/
-
+  for ( i = 1; i < DATA_SIZE; i++)
+  {
+    for (y0=(y/DATA_SIZE0)*DATA_SIZE0; y0<(DATA_SIZE0+(y/DATA_SIZE0)*DATA_SIZE0); y0++)
+    {
+      for (x0=(x/DATA_SIZE0)*DATA_SIZE0; x0<(DATA_SIZE0+(x/DATA_SIZE0)*DATA_SIZE0); x0++)
+      {
+        if (board[y0][x0] == i)
+        {
+          possible[i] = FALSE;
+        }      
+      }
+    }   
+  }
+  
 
 
   for(i=1;i<=DATA_SIZE;i++){
