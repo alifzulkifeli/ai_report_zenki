@@ -3,8 +3,8 @@
 #include <math.h>
 #define	TRUE		1
 #define FALSE		0
-#define DATA_SIZE0      3                           
-#define DATA_SIZE       DATA_SIZE0*DATA_SIZE0
+#define DATA_SIZE0   3                           
+#define DATA_SIZE  DATA_SIZE0*DATA_SIZE0
 
 /************************************************************************
    問題 (答え) の表示							
@@ -84,6 +84,8 @@ int find_blank(int *x, int *y, int board[DATA_SIZE][DATA_SIZE]){
   }
   return  FALSE;
 } 
+
+
 
 /************************************************************************
    問題を解く
