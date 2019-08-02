@@ -80,7 +80,7 @@ int find_blank(int *x, int *y, int board[DATA_SIZE][DATA_SIZE]){
       {
         return TRUE;
       }
-    }
+    } 
   }
   return  FALSE;
 } 
