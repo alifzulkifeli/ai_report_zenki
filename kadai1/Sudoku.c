@@ -3,7 +3,7 @@
 #include <math.h>
 #define	TRUE		1
 #define FALSE		0
-#define DATA_SIZE0   3                           
+#define DATA_SIZE0 2                           
 #define DATA_SIZE  DATA_SIZE0*DATA_SIZE0
 
 /************************************************************************
@@ -113,12 +113,12 @@ void solve(int x, int y, int board[DATA_SIZE][DATA_SIZE])
 
   /* 縦・横方向に boardの値を調べて、すでに使用されている数字のところは
      possible を FALSE にする */
-  for(i=0;i<DATA_SIZE;i++){
+  for(i=1;i<=DATA_SIZE;i++){
     /* 横方向 */
     /*** この部分を自分で書く ***/
     for ( y0 = 0; y0 < DATA_SIZE; y0++)
     {
-      if (board[y][y0] == i)
+      if (board[y0][x] == i)
       {
         possible[i] = FALSE;
       }
@@ -139,7 +139,7 @@ void solve(int x, int y, int board[DATA_SIZE][DATA_SIZE])
   /* DATA_SIZE0xDATA_SIZE0の枠の中の board の値を調べて、
     すでに使用されている数字のところは possible を FALSE にする */
   /*** この部分を自分で書く ***/
-  for ( i = 1; i < DATA_SIZE; i++)
+  for ( i = 1; i <= DATA_SIZE; i++)
   {
     for (y0=(y/DATA_SIZE0)*DATA_SIZE0; y0<(DATA_SIZE0+(y/DATA_SIZE0)*DATA_SIZE0); y0++)
     {
